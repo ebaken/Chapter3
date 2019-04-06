@@ -1,0 +1,10 @@
+Predictor variable,Categorical,Sample average
+alt,false,637.4912280701755
+current_2.5arcmin_PETDriestQuarter,false,80.73377192647834
+current_2.5arcmin_PETWettestQuarter,false,110.93043829683671
+current_2.5arcmin_climaticMoistureIndex,false,-0.0219298245777425
+wc2.0_bio_2.5m_1,false,11.895559348362056
+wc2.0_bio_2.5m_16,false,432.9824561403509
+wc2.0_bio_2.5m_17,false,165.78070175438597
+wc2.0_bio_2.5m_5,false,26.68365982959145
+wc2.0_bio_2.5m_6,false,-4.809894716824617
