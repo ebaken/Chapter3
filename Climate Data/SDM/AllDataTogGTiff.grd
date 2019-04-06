@@ -1,0 +1,25 @@
+[general]
+creator=R package 'raster'
+created=2019-03-28 17:28:15
+[georeference]
+nrows=3435
+ncols=4028
+xmin=-179.166666666667
+ymin=-59.5
+xmax=-11.3333333333333
+ymax=83.625
+projection=+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0
+[data]
+datatype=FLT4S
+byteorder=little
+nbands=9
+bandorder=BIL
+minvalue=-196:-27.5884996255239:-9:-53.6160011291504:0:0:-1:0:0
+maxvalue=6269:30.7581668694814:50.5279998779297:26.1000003814697:5300:1560:0.980000019073486:244.779998779297:212.729995727539
+nodatavalue=-3.4e+38
+[legend]
+legendtype=
+values=
+color=
+[description]
+layername=alt:wc2.0_bio_2.5m_1:wc2.0_bio_2.5m_5:wc2.0_bio_2.5m_6:wc2.0_bio_2.5m_16:wc2.0_bio_2.5m_17:current_2.5arcmin_climaticMoistureIndex:current_2.5arcmin_PETDriestQuarter:current_2.5arcmin_PETWettestQuarter

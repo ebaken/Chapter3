@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.1">
+<Document>
+	<name>Annual World Cloud Cover Map</name>
+	<description><![CDATA[<span style="font-size: 9pt; text-align: left; white-space: nowrap;">
+   &copy;2005&nbsp;<a href="http://xjubier.free.fr/">Xavier&nbsp;M.&nbsp;Jubier</a><br />
+   Uses data acquired by the <a href="http://isccp.giss.nasa.gov/index.html">International Satellite Cloud Climatology Project (ISCCP)</a><br />
+   The map is courtesy of <a href="http://home.cc.umanitoba.ca/%7Ejander/index.html">Jay Anderson</a>.
+  </span>]]></description>
+	<LookAt>
+		<longitude>-5</longitude>
+		<latitude>20</latitude>
+		<altitude>0</altitude>
+		<range>10081048</range>
+		<tilt>0</tilt>
+		<heading>0</heading>
+	</LookAt>
+	<Folder>
+		<name>Overlays</name>
+		<description><![CDATA[<span style="font-size: 9pt; text-align: left;">
+    Image and screen overlays
+   </span>]]></description>
+		<Folder>
+			<name>Image Overlay</name>
+			<description><![CDATA[<span style="font-size: 9pt; text-align: left;">
+     Image overlay
+    </span>]]></description>
+			<GroundOverlay>
+				<name>Annual Mean World Cloud Cover Map overlay</name>
+				<description><![CDATA[<span style="font-size: 9pt; text-align: left;">
+      Annual mean world cloud cover map overlay.
+     </span>]]></description>
+				<LookAt>
+					<longitude>-5</longitude>
+					<latitude>20</latitude>
+					<altitude>0</altitude>
+					<range>10081048</range>
+					<tilt>0</tilt>
+					<heading>0</heading>
+				</LookAt>
+				<color>90ffffff</color>
+				<drawOrder>1</drawOrder>
+				<Icon>
+					<href>files/GE_Annual_MeanCloudCover.png</href>
+					<viewBoundScale>0.75</viewBoundScale>
+				</Icon>
+				<LatLonBox>
+					<north>90</north>
+					<south>-90</south>
+					<east>180</east>
+					<west>-180</west>
+				</LatLonBox>
+			</GroundOverlay>
+		</Folder>
+		<Folder>
+			<name>Screen Overlays</name>
+			<description><![CDATA[<span style="font-size: 9pt; text-align: left;">
+     Screen overlays
+    </span>]]></description>
+			<ScreenOverlay id="MeanCloudCover_Scale">
+				<name>Mean Cloud Cover Scale</name>
+				<description><![CDATA[<span style="font-size: 9pt; text-align: left; white-space: nowrap;">
+      Mean cloud cover in percent.
+     </span>]]></description>
+				<color>bbffffff</color>
+				<Icon>
+					<href>files/GE_MeanCloudCover_Scale.png</href>
+				</Icon>
+				<overlayXY x="0" y="1" xunits="fraction" yunits="fraction"/>
+				<screenXY x="0" y="1" xunits="fraction" yunits="fraction"/>
+				<rotationXY x="0" y="0" xunits="fraction" yunits="fraction"/>
+				<size x="68" y="568" xunits="pixels" yunits="pixels"/>
+			</ScreenOverlay>
+			<ScreenOverlay id="Copyright">
+				<name>Copyright notice</name>
+				<description>Do not alter or remove.</description>
+				<Icon>
+					<href>files/GE_Copyright.gif</href>
+				</Icon>
+				<overlayXY x="0.5" y="-0.4" xunits="fraction" yunits="fraction"/>
+				<screenXY x="0.5" y="0.06" xunits="fraction" yunits="fraction"/>
+				<rotationXY x="0" y="0" xunits="fraction" yunits="fraction"/>
+				<size x="0" y="0" xunits="pixels" yunits="pixels"/>
+			</ScreenOverlay>
+		</Folder>
+	</Folder>
+</Document>
+</kml>
