@@ -1,0 +1,294 @@
+---
+title: "Spatial Data Wrangling in R"
+author: "Hannah M Carroll"
+output: html_notebook
+---
+
+Most of my work involves spatial analysis of some kind and a ton of mapping
+
+- Problem: I hate ArcGIS (a lot)
+
+- Solution: Everything is better in R
+
+---
+
+There are many ways to do these operations. I will go through what I find to be handy.
+
+
+```{r}
+
+# Set your working directory to the source file location
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+
+```
+
+
+Packages you will need:
+
+```{r}
+
+# List of the packages you need
+packages <- c("ggmap", "sp", "rgdal", "rgeos", "maptools", "viridis", "ggplot2", "maps", "raster", "spatialEco", "dplyr") 
+
+# Which ones are new to your machine?
+new.packages <- packages[!(packages %in% installed.packages()[,"Package"])]
+
+# If they're new, install them
+if(length(new.packages)) install.packages(new.packages)
+
+# Now load all required packages into memory
+lapply(packages, library, character.only = TRUE)
+```
+
+---
+
+The first step: Get a shapefile
+
+You can download a shapefile directly from a website or ftp
+
+```{r}
+if (!file.exists("./ia_eco_l4.shp")){
+  download.file(file.path('ftp://newftp.epa.gov/EPADataCommons/ORD/Ecoregions/ia/ia_eco_l4.zip'), 
+                f <- tempfile())
+  unzip(f, exdir = getwd()) # This unzips the file to your working directory
+  rm(f)
+}
+```
+---
+
+Read in with package rgdal
+```{r}
+
+# These are the EPA Level 4 ecoregions of Iowa
+iowa.regions <- readOGR(dsn=getwd(), layer="ia_eco_l4") 
+
+plot(iowa.regions)
+
+```
+
+---
+
+I'm going to show you a few (of MANY) ways to play with spatial data in R
+
+---
+
+Beginning with ggplot2
+
+```{r}
+
+ggplot() + theme_void() + 
+  geom_polygon(data=fortify(iowa.regions), aes(x=long, y=lat, group=group), colour="grey68", fill="grey95")
+
+# Fortify is important. This transforms a spatial data frame into a data frame ggplot2 can handle.
+
+```
+
+---
+
+This map is boring. Flatten the SpatialPolygonsDataFrame to a standard data frame to do more.
+
+```{r}
+
+# Create points for ecoregions
+iowa.regions@data$id <- rownames(iowa.regions@data) # Create an id field to join on
+iowa.regions.points <- fortify(iowa.regions, region="id") # Extract the points we need from the SPDF
+
+# Join the data with the spatial information by row
+iowa.regions.df <- merge.data.frame(iowa.regions.points, iowa.regions@data, by="id")
+
+# Note that fortify is no longer needed because we're working with a data frame
+l4map <- ggplot() + theme_void() + 
+  geom_polygon(data=iowa.regions.df, aes(x=long, y=lat, group=group, fill=US_L4NAME), color="grey68") +
+  scale_fill_viridis_d(name="Level IV Ecoregions", alpha=0.2) + coord_quickmap()
+
+# Adding cord_quickmap gives a basic projection to something plotted from a data frame. It's better (but much slower) to use coord_map()
+
+l4map
+
+```
+
+---
+
+Let's add hillshade from lidar
+
+Use state raster data (the state's link to this is broken as of Wednesday so it's in the GitHub folder)
+
+```{r}
+# Read a geotiff with package raster
+
+lidar <- raster("lidar_hs.tif")
+
+plot(lidar) # We'll fix the colors later
+
+```
+
+---
+
+Reprojecting
+
+```{r}
+
+# We're going back to the orginal SPDF for now because we need the projection for the next set of operations.
+
+# Are the projections the same?
+
+identicalCRS(iowa.regions, lidar) # CRS stands for Coordinate Reference System. You can use this check for any two projected spatial objects.
+
+# Nope
+
+```
+
+---
+
+Reprojecting the raster
+
+```{r}
+
+# Reproject the raster to match the state ecoregions
+
+lidar.nad83 <- projectRaster(lidar, crs = crs(iowa.regions))
+
+# Ignore the error. Lidar data will include bad returns that we'll strip out later.
+
+```
+
+---
+
+```{r}
+
+#convert the raster to points
+lidar.p <- rasterToPoints(lidar.nad83)
+
+#Make the points a dataframe for ggplot
+lidar.df <- data.frame(lidar.p)
+
+#Make appropriate column headings
+colnames(lidar.df) <- c("x", "y", "MAP")
+
+# Delete rows with low values for MAP (These are edges and bad returns)
+lidar.df <- lidar.df[lidar.df$MAP > 100, ]
+
+```
+
+```{r}
+
+# Make sure we have a good dataset now
+summary(lidar.df)
+
+```
+
+---
+
+Make it black and white to lay other colors on top
+
+```{r}
+
+hs.map <- ggplot(lidar.df, aes(x=x, y=y, color=MAP), na.rm=T) + geom_point() + theme_void() +
+   scale_color_gradient2(low="black", mid="gray35", high="gray100", midpoint=150, 
+                         # Midpoint is going to depend on the landscape. Play with this to get a good contrast.
+                       na.value = NA) + guides(color=FALSE)
+
+# Note: it's preferable (faster) to use geom_raster if you don't have two scale fill variables. But we do, so we're using geom_point.
+
+hs.map
+
+```
+
+---
+
+```{r}
+
+# Now lay the ecoregions on top
+
+hs.map + geom_polygon(data=iowa.regions.df, aes(x=long, y=lat, group=group, fill=US_L4NAME), color="grey68", alpha = 0.2) +
+  scale_fill_viridis_d(name="Level IV Ecoregions", alpha=0.6) + coord_quickmap()
+
+```
+
+
+
+---
+
+Point in poly operations and spatial joins
+
+```{r}
+if (!file.exists("./wc2.0_2.5m_prec_05.tif")){
+  download.file(file.path('http://biogeo.ucdavis.edu/data/worldclim/v2.0/tif/base/wc2.0_2.5m_prec.zip'), 
+                f2 <- tempfile())
+  unzip(f2, exdir = getwd()) # This unzips the file to your working directory
+  rm(f2)
+}
+
+```
+
+```{r}
+# Read in May data
+
+# For the full worldclim dataset, use: clim <- getData("worldclim",var="bio",res=2.5)
+
+may.precip <- raster("wc2.0_2.5m_prec_05.tif")
+
+plot(may.precip)
+
+```
+
+Now to clip this to Iowa
+
+```{r}
+
+# Convert a rasterlayer to spdf
+may.spdf <- as(may.precip, "SpatialPixelsDataFrame")
+
+```
+
+```{r}
+
+# Transform to match the projection of our regions
+may.spdf <- spTransform(may.spdf, CRS(proj4string(iowa.regions)))
+
+```
+
+```{r}
+
+# Clip to Iowa (to make the point in poly operation faster)
+ia.precip <- may.spdf[!is.na(over(may.spdf,as(iowa.regions,"SpatialPolygons"))),]
+
+```
+
+```{r}
+
+# Join points (precip) to polygons (regions)
+precip.by.region <- point.in.poly(ia.precip, iowa.regions) # from the spatialEco package
+
+```
+
+```{r}
+
+# Flatten to a data frame (or skip and use fortify)
+pbyr.df <- as.data.frame(precip.by.region)
+
+# Give it better column names
+colnames(pbyr.df)[c(1,22,23)] <- c("mm10", "x", "y")
+
+```
+
+```{r}
+
+# Note that fortify is no longer needed because we're working with a data frame
+ ggplot(pbyr.df, aes(x=x, y=y, color=mm10/10)) + theme_void() + geom_point(size=2) +
+ geom_polygon(data=iowa.regions.df, aes(x=long, y=lat, group=group), fill=NA, color="grey95") +
+  scale_color_viridis(name="Precipitation (mm)", alpha=0.8) + coord_quickmap()
+
+```
+
+```{r}
+
+# See a summary of precip by region
+
+pbyr.df %>%
+  group_by(US_L4NAME) %>%
+  summarize(mean_may_precip = mean(mm10/10, na.rm = TRUE))
+
+```
+
+---

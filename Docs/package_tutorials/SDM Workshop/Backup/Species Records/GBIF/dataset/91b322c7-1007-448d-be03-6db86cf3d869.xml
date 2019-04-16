@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<eml:eml xmlns:eml="eml://ecoinformatics.org/eml-2.1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="eml://ecoinformatics.org/eml-2.1.1 http://rs.gbif.org/schema/eml-gbif-profile/1.1/eml.xsd"
+        packageId="91b322c7-1007-448d-be03-6db86cf3d869"  system="http://gbif.org" scope="system"
+  xml:lang="en">
+
+<dataset>
+      <alternateIdentifier>doi:10.15468/whh1aw</alternateIdentifier>
+        <alternateIdentifier>91b322c7-1007-448d-be03-6db86cf3d869</alternateIdentifier>
+        <alternateIdentifier>http://ipt.idigbio.org/resource?r=mcnh-mamm</alternateIdentifier>
+    <title>MCNH Museum of Cultural and Natural History Mammals Collection</title>
+    <creator>
+    <individualName>
+<givenName>Kirsten E.</givenName>        <surName>Nicholson</surName>
+    </individualName>
+<organizationName>Museum of Cultural and Natural History</organizationName><positionName>Curator of Natural History</positionName>    <address>
+<deliveryPoint>103 Rowe Hall, Central Michigan University</deliveryPoint><city>Mount Pleasant</city><administrativeArea>Michigan</administrativeArea><postalCode>48859</postalCode><country>UNITED_STATES</country>    </address>
+<phone>+01 989-774-3176</phone><electronicMailAddress>kirsten.nicholson@cmich.edu</electronicMailAddress>    </creator>
+    <metadataProvider>
+    <individualName>
+<givenName>Kirsten E.</givenName>        <surName>Nicholson</surName>
+    </individualName>
+<organizationName>Museum of Cultural and Natural History</organizationName><positionName>Curator of Natural History</positionName>    <address>
+<deliveryPoint>103 Rowe Hall, Central Michigan University</deliveryPoint><city>Mount Pleasant</city><administrativeArea>Michigan</administrativeArea><postalCode>48859</postalCode><country>UNITED_STATES</country>    </address>
+<phone>+01 989-774-3176</phone><electronicMailAddress>kirsten.nicholson@cmich.edu</electronicMailAddress>    </metadataProvider>
+    <metadataProvider>
+    <individualName>
+<givenName>Alec</givenName>        <surName>Zuhorski</surName>
+    </individualName>
+<organizationName>Museum of Cultural and Natural History</organizationName><positionName>Museum Assistant</positionName>    <address>
+<deliveryPoint>103 Rowe Hall, Central Michigan University</deliveryPoint><city>Mount Pleasant</city><administrativeArea>Michigan</administrativeArea><postalCode>48859</postalCode><country>UNITED_STATES</country>    </address>
+<phone>+01 313-550-8316</phone><electronicMailAddress>zuhor1ar@cmich.edu</electronicMailAddress>    </metadataProvider>
+    <associatedParty>
+    <individualName>
+<givenName>Joanna</givenName>        <surName>McCaffrey</surName>
+    </individualName>
+<organizationName>iDigBio</organizationName><positionName>Biodiversity Informatics Manager</positionName><electronicMailAddress>jmccaffrey@flmnh.ufl.edu</electronicMailAddress>    <role>PROGRAMMER</role>
+    </associatedParty>
+      <pubDate>
+      2017-02-27
+      </pubDate>
+    <language>ENGLISH</language>
+    <abstract>
+        <para>The Natural History collections at Central Michigan University’s Museum of Cultural and Natural History consist of a wide range of representative species typically found in the Great Lakes region. The collection consists predominantly of Michigan vertebrates, with smaller invertebrate collections representation, amassed over the last 50 years. The vertebrate component consists of representative mammals, birds, amphibians, reptiles, and fish, while the majority of the invertebrate collections are insects. These collections support the educational and research efforts of CMU students and faculty members, as well as any interested researchers.
+ 
+The mammal collection includes nearly all currently recognized species from Michigan, as well as complimentary species from throughout the United States. Most specimens are prepared as study skins, but there are several taxidermied mounts and skeletons available for examination.</para>
+    </abstract>
+        <keywordSet>
+              <keyword>Occurrence</keyword>
+              <keywordThesaurus>GBIF Dataset Type Vocabulary: http://rs.gbif.org/vocabulary/gbif/dataset_type.xml</keywordThesaurus>
+        </keywordSet>
+        <keywordSet>
+              <keyword>Specimen</keyword>
+              <keywordThesaurus>GBIF Dataset Subtype Vocabulary: http://rs.gbif.org/vocabulary/gbif/dataset_subtype.xml</keywordThesaurus>
+        </keywordSet>
+      <intellectualRights>
+        <para>To the extent possible under law, the publisher has waived all rights to these data and has dedicated them to the <ulink url="http://creativecommons.org/publicdomain/zero/1.0/legalcode"><citetitle>Public Domain (CC0 1.0)</citetitle></ulink>. Users may copy, modify, distribute and use the work, including for commercial purposes, without restriction.</para>
+      </intellectualRights>
+      <coverage>
+            <geographicCoverage>
+                  <geographicDescription>The collection consists primarily of Michigan specimens.</geographicDescription>
+                  <boundingCoordinates>
+                      <westBoundingCoordinate>-89.98</westBoundingCoordinate>
+                      <eastBoundingCoordinate>-82.29</eastBoundingCoordinate>
+                      <northBoundingCoordinate>47.73</northBoundingCoordinate>
+                      <southBoundingCoordinate>41.47</southBoundingCoordinate>
+                  </boundingCoordinates>
+            </geographicCoverage>
+              <taxonomicCoverage>
+                    <taxonomicClassification>
+                          <taxonRankName>Order</taxonRankName>
+                        <taxonRankValue>Rodentia, Lagomorpha, Carnivora, Artiodactyla, Didelphimorpha, Eulipotyphla and Chiroptera</taxonRankValue>
+                    </taxonomicClassification>
+              </taxonomicCoverage>
+      </coverage>
+      <maintenance>
+          <description>
+              <para></para>
+          </description>
+          <maintenanceUpdateFrequency>unkown</maintenanceUpdateFrequency>
+      </maintenance>
+      <contact>
+    <individualName>
+<givenName>Kirsten E.</givenName>        <surName>Nicholson</surName>
+    </individualName>
+<organizationName>Museum of Cultural and Natural History</organizationName><positionName>Curator of Natural History</positionName>    <address>
+<deliveryPoint>103 Rowe Hall, Central Michigan University</deliveryPoint><city>Mount Pleasant</city><administrativeArea>Michigan</administrativeArea><postalCode>48859</postalCode><country>UNITED_STATES</country>    </address>
+<phone>+01 989-774-3176</phone><electronicMailAddress>kirsten.nicholson@cmich.edu</electronicMailAddress>      </contact>
+
+</dataset>
+
+<additionalMetadata>
+    <metadata>
+      <gbif>
+        <dateStamp>2017-07-18T20:43:59Z</dateStamp>
+      <citation>Nicholson K E, Zuhorski A (2017). MCNH Museum of Cultural and Natural History Mammals Collection. Version 1.9. Museum of Cultural and Natural History - Central Michigan University. Occurrence Dataset https://doi.org/10.15468/whh1aw accessed via GBIF.org on 2017-07-18.</citation>
+              <resourceLogoUrl>http://ipt.idigbio.org/logo.do?r=mcnh-mamm</resourceLogoUrl>
+        </gbif>
+    </metadata>
+</additionalMetadata>
+
+</eml:eml>
