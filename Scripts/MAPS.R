@@ -1,10 +1,13 @@
  ###################################
 #### MAPPING SCRIPT ###############
 ###################################
+ 
+# THIS IS JUST A SCRIPT TO MAKE MAPS
+ # ADDED LEAFLET SCRIPT TO THE BOTTOM
+ 
 library(magrittr); library(maptools); library(rgeos)
 library(scales); library(mapproj); library(maps)
 library(mapdata)
-
 
 # AllPolysforanalysis is IUCN + LM Polys 
 # UniqueNLMPolys is IUCN only 
@@ -94,7 +97,13 @@ plot(FossPoly)
 
 #PROJECTED MAPS
 map(database = "world", fill = TRUE, col = 8, border = F, plot = TRUE, add=F,
-    xlim = c(-155,-30), ylim = c(-10,60))
+    xlim = c(-155,-40), ylim = c(-10,60))
+map(database = "world", fill = TRUE, col = 8, border = F, plot = TRUE, add=F,
+    xlim = c(-105,-80), ylim = c(10,24))
+plot(ArbPoly, add=T)
+plot(ArbPoints, add=T)
+plot(dry.gridMA,add=T)
+plot(AllPointss, add=T)
 map.axes()
 
 # plot(ArbPoly, add=TRUE, xlim=c(-200,-40),ylim=c(-10,90), 
@@ -117,6 +126,14 @@ plot(RockPoly, add = T, xlim = c(-200, -40), ylim = c(-10,90),
      col = alpha("orange", 0.5), border = F)
 plot(WaterPoly, add = T, xlim = c(-200, -40), ylim = c(-10,90),
      col = alpha("blue", 0.5), border = F)
+##
+plot(ArbPoly, add = T, xlim = c(-200, -40), ylim = c(-10,90),
+     col = alpha("black", 0.9), border = F)
+plot(ArbC5, add = T, xlim = c(-200, -40), ylim = c(-10,90),border = F)
+
+plot(TerrPoly, add = T, xlim = c(-200, -40), ylim = c(-10,90),
+     col = alpha("black", 0.6), border = F)
+plot(TerrC5, add = T, xlim = c(-200, -40), ylim = c(-10,90),border = F)
 
 
 
@@ -250,7 +267,54 @@ leaflet:::leaflet() %>%
                           popup = AnPoly$binomial
     )
 
-
+#########################################
+## THIS IS JUST A FUN INTERACTIVE MAP ###
+#########################################
+  
+  library(leaflet)
+  library(tidyr)
+  
+  leaflet:::leaflet() %>% leaflet:::addTiles() %>% leaflet:::setView(lng = c(-10,60), lat = c(-155,-30), zoom = 7)
+  
+  leaflet:::leaflet() %>%
+    leaflet::addTiles() %>%
+    # #leaflet:::addPolygons(data = DirtPoly,
+    #                       color = "black", 
+    #                       weight = 1, 
+    #                       smoothFactor = 0.1,
+    #                       opacity = 1.0, 
+    #                       fillOpacity = 0.5,
+    #                       group = "Dirt",
+    #                       popup = DirtPoly$binomial
+    #                       ) %>%
+    leaflet:::addPolygons(data = VegPoly,
+                          color = "green",
+                          weight = 1,
+                          smoothFactor = 0.1,
+                          opacity = 1.0,
+                          fillOpacity = 0.5,
+                          group = "Veg",
+                          popup = VegPoly$binomial
+    ) #%>%
+  # #leaflet:::addPolygons(data = RockPoly,
+  #                       color = "orange",
+  #                       weight = 1,
+  #                       smoothFactor = 0.1,
+  #                       opacity = 1.0,
+  #                       fillOpacity = 0.5,
+  #                       group = "Rock",
+  #                       popup = RockPoly$binomial
+  #                       ) %>%
+  # #leaflet:::addPolygons(data = WaterPoly,
+  #                       color = "blue",
+  #                       weight = 1,
+  #                       smoothFactor = 0.1,
+  #                       opacity = 1.0,
+  #                       fillOpacity = 0.5,
+  #                       group = "Water" ,
+  #                       popup = WaterPoly$binomial
+  #) 
+  
 
 
 

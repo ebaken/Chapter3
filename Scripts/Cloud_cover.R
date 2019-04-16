@@ -2,6 +2,9 @@
 #### cloud cover new dataset ###########
 ########################################
 
+# THIS IS CLIPPING THE CLOUD COVER DATASET TO ANALYZE THE SIGNIFICANCE ACROSS POLYS WITH CSV
+# ALSO THIS PREPS IT FOR THE MAXENT ANALYSIS
+
 # from website
 # https://visibleearth.nasa.gov/view.php?id=85843
 
@@ -22,14 +25,7 @@ library(ggplot2)
 # writeRaster(NASA1, filename="./Analysis_Scripts/Chapter3/Climate Data/Cropped_Cloud.tif")
 
 NASA <- raster("./Analysis_Scripts/Chapter3/Climate Data/Cropped_Cloud.tif")
-
-# make note of the units of each var somewhere
-# edges, bounces, no data how do you check this and play around with what you want
-# look at the different cut off points
-# make midquart as the midpoint which can pull it apart enough
-
 AllPolysforanalysis <- readOGR("./Analysis_Scripts/Chapter3/Shapefiles/AllPolysforAnalysis/chull.shp")
-
 Records <- matrix(NA, nrow = 311, ncol = 7)
 colnames(Records) <- c("binomial","CloudMin","Cloud1Q","CloudMed","CloudMea","Cloud3Q","CloudMax")
 
@@ -47,7 +43,6 @@ RecordsDF[] <- lapply(RecordsDF, gsub, pattern="\\Max.   :", replacement="")
 RecordsDF[] <- lapply(RecordsDF, gsub, pattern="\\Mean   :", replacement="")
 RecordsDF[] <- lapply(RecordsDF, gsub, pattern="\\Median :", replacement="")
 RecordsDF[] <- lapply(RecordsDF, gsub, pattern="\\Min.   :", replacement="")
-
 RecordsDF[] <- lapply(RecordsDF, gsub, pattern="1st Qu.:", replacement="")
 RecordsDF[] <- lapply(RecordsDF, gsub, pattern="3rd Qu.:", replacement="")
 RecordsDF

@@ -3,17 +3,21 @@
 #### for Veg and Dirt polys          #######
 ############################################
 
+# using polygons only
+# distribution overlaps
+
 # Load Libs
 library(spatstat); library(rgeos); library(geosphere)
 library(maps); library(magrittr); library(maptools)
 library(scales); library(mapproj); library(mapdata)
 library(raster)
 
+# NOTE FOR LAUREN
 # hidden functions in function
 # function:::
 # package:::function
 
-# Load polgon file
+# Load polygon file
 Polygons <- readShapePoly("Analysis_Scripts/Chapter3/Shapefiles/AllPolysforanalysis/chull.shp") 
 
 # Check poly labels
@@ -229,6 +233,28 @@ areaPolygon(inter) / 1e6
 # get full area for all sallys
 areaPolygon(Polygons3) / 1e6
 # 5,178,265
+
+ArbPolyy <- aggregate(ArbPoly, dissolve=T)
+plot(ArbPolyy)
+areaPolygon(ArbPolyy) / 1e6
+# 593188.5
+areaPolygon(ArbPolyAll) / 1e6
+
+crs(TerrPoly)
+TerrPoly <- gBuffer(TerrPoly, byid=T, width=0)
+TerrPolyy <- aggregate(TerrPoly, dissolve=T)
+plot(TerrPoly)
+areaPolygon(TerrPolyAll) / 1e6
+# 4547682
+
+#Arb of all
+(593188.5/5178265)*100
+# Terr of all
+(4547682/5178265)*100
+
+interATTT <- raster::intersect(ArbPolyAll, TerrPolyAll)
+areaPolygon(interATTT) / 1e6
+(174936/5178265)*100
 
 # get full area of dirt
 areaPolygon(DirtPoly2) / 1e6

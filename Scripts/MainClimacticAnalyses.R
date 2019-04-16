@@ -4,6 +4,9 @@
 ##########################################################
 ##########################################################
 
+# STANDARD NORMAL DEVIATES ANALYSIS
+# DECIDING WHICH VARIABLES TO USE IN MAXENT MODEL
+
 # Packages
 library(sp);library(tidyr);library(dplyr);library(maps);library(ape)
 library(stringr);library(ggmap);library(data.table);library(jpeg)
