@@ -34,6 +34,7 @@ anyNA(Class1$Species) # want FALSE
 
 # prune the polygons by substrate and micro habitat
 #
+Class1$
 ###### substrate ##########
 #
 ### prune dirt
