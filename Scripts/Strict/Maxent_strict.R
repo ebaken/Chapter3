@@ -2,6 +2,7 @@
 ### MAXENT SCRIPT DRAFT for strict microhabitats only #######
 ###############################
 
+
 # MAXENT MODELS AND EVALUATIONS
 
 library(dismo); library(rJava); library(maptools)
@@ -119,6 +120,10 @@ occtrainS <- occS[foldS != 1, ]
 ArbMod <- maxent(predictors, occtrainA, args=c("-J","-P",'replicates=5'), 
                   path="./Analysis_Scripts/Chapter3/ENM/Maxent_Files/ArbMod_strict")
 
+# tried with bootstrap and didnt improve AUC, but we may need to do later?
+#ArbModB <- maxent(predictors, occtrainA, args=c("-J","-P",'replicates=5','replicatetype=bootstrap'), 
+                 #path="./Analysis_Scripts/Chapter3/ENM/Maxent_Files/ArbModB_strict")
+
 TerrMod <- maxent(predictors, occtrainT, args=c("-J","-P",'replicates=5'), 
                    path="./Analysis_Scripts/Chapter3/ENM/Maxent_Files/TerrMod_strict")
 
@@ -147,7 +152,8 @@ ArbPrediction <- predict(ArbMod, predictors, progress="text",
                   filename='./Analysis_Scripts/Chapter3/ENM/Prediction/ArbMod_strict_prediction.grd',
                   overwrite=T)
 ArbPredictionAverage <- mean(ArbPrediction) 
-writeRaster(ArbPredictionAverage, paste0('./Analysis_Scripts/Chapter3/ENM/Prediction/ArbMod_prediction_strict'))
+writeRaster(ArbPredictionAverage, paste0('./Analysis_Scripts/Chapter3/ENM/Prediction/ArbMod_prediction_strict'),
+            overwrite=T)
 
 
 # terrestrial prediction
@@ -155,7 +161,8 @@ TerrPrediction <- predict(TerrMod, predictors, progress="text",
                          filename='./Analysis_Scripts/Chapter3/ENM/Prediction/TerrMod_strict_prediction.grd',
                          overwrite=T)
 TerrPredictionAverage <- mean(TerrPrediction) 
-writeRaster(TerrPredictionAverage, paste0('./Analysis_Scripts/Chapter3/ENM/Prediction/TerrMod_prediction_strict'))
+writeRaster(TerrPredictionAverage, paste0('./Analysis_Scripts/Chapter3/ENM/Prediction/TerrMod_prediction_strict'),
+            overwrite=T)
 
 
 # Aquatic prediction
@@ -204,26 +211,26 @@ bg <- randomPoints(predictors, 1000)
 
 # evaluate every model from the replication in arb
 AS1 <- evaluate(ArbMod@models[[1]], p=occtestA, a=bg, x=predictors)
-AS1 # 
+AS1 # 0.91
 AS2 <- evaluate(ArbMod@models[[2]], p=occtestA, a=bg, x=predictors)
-AS2 # 
+AS2 # 0.90
 AS3 <- evaluate(ArbMod@models[[3]], p=occtestA, a=bg, x=predictors)
-AS3 # 
+AS3 # 0.90
 AS4 <- evaluate(ArbMod@models[[4]], p=occtestA, a=bg, x=predictors)
-AS4 # 
+AS4 # 0.91
 AS5 <- evaluate(ArbMod@models[[5]], p=occtestA, a=bg, x=predictors)
-AS5 # 
+AS5 # 0.89
 # evaluate every model from the replication in terr
 TS1 <- evaluate(TerrMod@models[[1]], p=occtestT, a=bg, x=predictors)
-TS1 # 
+TS1 # 0.83
 TS2 <- evaluate(TerrMod@models[[2]], p=occtestT, a=bg, x=predictors)
-TS2 # 
+TS2 # 0.81
 TS3 <- evaluate(TerrMod@models[[3]], p=occtestT, a=bg, x=predictors)
-TS3 # 
+TS3 # 0.83
 TS4 <- evaluate(TerrMod@models[[4]], p=occtestT, a=bg, x=predictors)
-TS4 # 
+TS4 # 0.81
 TS5 <- evaluate(TerrMod@models[[5]], p=occtestT, a=bg, x=predictors)
-TS5 # 
+TS5 # 0.82
 # evaluate every model from the replication in aquatic
 WS1 <- evaluate(AquaMod@models[[1]], p=occtestW, a=bg, x=predictors)
 WS1 # 0.92
@@ -292,3 +299,19 @@ v <- extract(predictors, VegNew)
 mess <-mess(predictors, v, full=FALSE)
 plot(mess)
 mess
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

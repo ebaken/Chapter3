@@ -369,13 +369,11 @@ plot(ArbMod)
 response(ArbMod)
 
 #predict to entire dataset
-
 # arboreal prediction
 ArbPredictionL <- predict(ArbModL, predictors, progress="text",
                          filename='./Analysis_Scripts/Chapter3/ENM/Prediction/ArbMod_lenient_prediction.grd',
                          overwrite=T)
 ArbPredictionLAverage <- mean(ArbPredictionL) 
-#plot(ArbPredictionLAverage) 
 writeRaster(ArbPredictionLAverage, paste0('./Analysis_Scripts/Chapter3/ENM/Prediction/ArbMod_prediction_Lenient'))
 
 
@@ -384,7 +382,6 @@ TerrPredictionL <- predict(TerrModL, predictors, progress="text",
                           filename='./Analysis_Scripts/Chapter3/ENM/Prediction/TerrMod_lenient_prediction.grd',
                           overwrite=T)
 TerrPredictionLAverage <- mean(TerrPredictionL) 
-#plot(TerrPredictionLAverage) 
 writeRaster(TerrPredictionLAverage, paste0('./Analysis_Scripts/Chapter3/ENM/Prediction/TerrMod_prediction_lenient'))
 
 
@@ -393,7 +390,6 @@ AquaPredictionL <- predict(AquaModL, predictors, progress="text",
                           filename='./Analysis_Scripts/Chapter3/ENM/Prediction/AquaMod_lenient_prediction.grd',
                           overwrite=T)
 AquaPredictionLAverage <- mean(AquaPredictionL) 
-#plot(AquaPredictionLAverage) 
 writeRaster(AquaPredictionLAverage, paste0('./Analysis_Scripts/Chapter3/ENM/Prediction/AquaMod_prediction_lenient'))
 
 
@@ -402,7 +398,6 @@ CavePredictionL <- predict(CaveModL, predictors, progress="text",
                           filename='./Analysis_Scripts/Chapter3/ENM/Prediction/CaveMod_lenient_prediction.grd',
                           overwrite=T)
 CavePredictionLAverage <- mean(CavePredictionL) 
-#plot(CavePredictionLAverage) 
 writeRaster(CavePredictionLAverage, paste0('./Analysis_Scripts/Chapter3/ENM/Prediction/CaveMod_prediction_lenient'))
 
 
@@ -411,7 +406,6 @@ FossPredictionL <- predict(FossModL, predictors, progress="text",
                           filename='./Analysis_Scripts/Chapter3/ENM/Prediction/FossMod_lenient_prediction.grd',
                           overwrite=T)
 FossPredictionLAverage <- mean(FossPredictionL) 
-#plot(FossPredictionLAverage) 
 writeRaster(FossPredictionLAverage, paste0('./Analysis_Scripts/Chapter3/ENM/Prediction/FossMod_prediction_lenient'))
 
 
@@ -420,16 +414,10 @@ SaxPredictionL <- predict(SaxModL, predictors, progress="text",
                          filename='./Analysis_Scripts/Chapter3/ENM/Prediction/SaxMod_lenient_prediction.grd',
                          overwrite=T)
 SaxPredictionLAverage <- mean(SaxPredictionL) 
-#plot(SaxPredictionLAverage) 
 writeRaster(SaxPredictionLAverage, paste0('./Analysis_Scripts/Chapter3/ENM/Prediction/SaxMod_prediction_lenient'))
 
 
-
-
-
 #################################################################################################################################
-
-
 
 
 # arboreal prediction
@@ -437,7 +425,6 @@ ArbPredictionM1 <- predict(ArbModM1, predictors, progress="text",
                          filename='./Analysis_Scripts/Chapter3/ENM/Prediction/ArbMod_M1_prediction.grd',
                          overwrite=T)
 ArbPredictionM1Average <- mean(ArbPredictionM1) 
-#plot(ArbPredictionM1Average) 
 writeRaster(ArbPredictionM1Average, paste0('./Analysis_Scripts/Chapter3/ENM/Prediction/ArbMod_prediction_M1'))
 
 
@@ -446,7 +433,6 @@ TerrPredictionM1 <- predict(TerrModM1, predictors, progress="text",
                           filename='./Analysis_Scripts/Chapter3/ENM/Prediction/TerrMod_M1_prediction.grd',
                           overwrite=T)
 TerrPredictionM1Average <- mean(TerrPredictionM1) 
-#plot(TerrPredictionM1Average) 
 writeRaster(TerrPredictionM1Average, paste0('./Analysis_Scripts/Chapter3/ENM/Prediction/TerrMod_prediction_M1'))
 
 
@@ -455,7 +441,6 @@ AquaPredictionM1 <- predict(AquaModM1, predictors, progress="text",
                           filename='./Analysis_Scripts/Chapter3/ENM/Prediction/AquaMod_M1_prediction.grd',
                           overwrite=T)
 AquaPredictionM1Average <- mean(AquaPredictionM1) 
-#plot(AquaPredictionM1Average) 
 writeRaster(AquaPredictionM1Average, paste0('./Analysis_Scripts/Chapter3/ENM/Prediction/AquaMod_prediction_M1'))
 
 
@@ -464,7 +449,6 @@ CavePredictionM1 <- predict(CaveModM1, predictors, progress="text",
                           filename='./Analysis_Scripts/Chapter3/ENM/Prediction/CaveMod_M1_prediction.grd',
                           overwrite=T)
 CavePredictionM1Average <- mean(CavePredictionM1) 
-#plot(CavePredictionM1Average) 
 writeRaster(CavePredictionM1Average, paste0('./Analysis_Scripts/Chapter3/ENM/Prediction/CaveMod_prediction_M1'))
 
 
@@ -473,7 +457,6 @@ FossPredictionM1 <- predict(FossModM1, predictors, progress="text",
                           filename='./Analysis_Scripts/Chapter3/ENM/Prediction/FossMod_M1_prediction.grd',
                           overwrite=T)
 FossPredictionM1Average <- mean(FossPredictionM1) 
-#plot(FossPredictionM1Average) 
 writeRaster(FossPredictionM1Average, paste0('./Analysis_Scripts/Chapter3/ENM/Prediction/FossMod_prediction_M1'))
 
 
@@ -482,14 +465,9 @@ SaxPredictionM1 <- predict(SaxModM1, predictors, progress="text",
                          filename='./Analysis_Scripts/Chapter3/ENM/Prediction/SaxMod_M1_prediction.grd',
                          overwrite=T)
 SaxPredictionM1Average <- mean(SaxPredictionM1) 
-#plot(SaxPredictionM1Average) 
 writeRaster(SaxPredictionM1Average, paste0('./Analysis_Scripts/Chapter3/ENM/Prediction/SaxMod_prediction_M1'))
 
-
-
 #################################################################################################################################
-
-
 
 
 # arboreal prediction
@@ -497,7 +475,6 @@ ArbPredictionM2 <- predict(ArbModM2, predictors, progress="text",
                          filename='./Analysis_Scripts/Chapter3/ENM/Prediction/ArbMod_M2_prediction.grd',
                          overwrite=T)
 ArbPredictionM2Average <- mean(ArbPredictionM2) 
-#plot(ArbPredictionM2Average) 
 writeRaster(ArbPredictionM2Average, paste0('./Analysis_Scripts/Chapter3/ENM/Prediction/ArbMod_prediction_M2'))
 
 
@@ -506,7 +483,6 @@ TerrPredictionM2 <- predict(TerrModM2, predictors, progress="text",
                           filename='./Analysis_Scripts/Chapter3/ENM/Prediction/TerrMod_M2_prediction.grd',
                           overwrite=T)
 TerrPredictionM2Average <- mean(TerrPredictionM2) 
-#plot(TerrPredictionM2Average) 
 writeRaster(TerrPredictionM2Average, paste0('./Analysis_Scripts/Chapter3/ENM/Prediction/TerrMod_prediction_M2'))
 
 
@@ -515,7 +491,6 @@ AquaPredictionM2 <- predict(AquaModM2, predictors, progress="text",
                           filename='./Analysis_Scripts/Chapter3/ENM/Prediction/AquaMod_M2_prediction.grd',
                           overwrite=T)
 AquaPredictionM2Average <- mean(AquaPredictionM2) 
-#plot(AquaPredictionM2Average) 
 writeRaster(AquaPredictionM2Average, paste0('./Analysis_Scripts/Chapter3/ENM/Prediction/AquaMod_prediction_M2'))
 
 
@@ -524,7 +499,6 @@ CavePredictionM2 <- predict(CaveModM2, predictors, progress="text",
                           filename='./Analysis_Scripts/Chapter3/ENM/Prediction/CaveMod_M2_prediction.grd',
                           overwrite=T)
 CavePredictionM2Average <- mean(CavePredictionM2) 
-#plot(CavePredictionM2Average) 
 writeRaster(CavePredictionM2Average, paste0('./Analysis_Scripts/Chapter3/ENM/Prediction/CaveMod_prediction_M2'))
 
 
@@ -533,7 +507,6 @@ FossPredictionM2 <- predict(FossModM2, predictors, progress="text",
                           filename='./Analysis_Scripts/Chapter3/ENM/Prediction/FossMod_M2_prediction.grd',
                           overwrite=T)
 FossPredictionM2Average <- mean(FossPredictionM2) 
-#plot(FossPredictionM2Average) 
 writeRaster(FossPredictionM2Average, paste0('./Analysis_Scripts/Chapter3/ENM/Prediction/FossMod_prediction_M2'))
 
 
@@ -542,10 +515,7 @@ SaxPredictionM2 <- predict(SaxModM2, predictors, progress="text",
                          filename='./Analysis_Scripts/Chapter3/ENM/Prediction/SaxMod_M2_prediction.grd',
                          overwrite=T)
 SaxPredictionM2Average <- mean(SaxPredictionM2) 
-#plot(SaxPredictionM2Average) 
 writeRaster(SaxPredictionM2Average, paste0('./Analysis_Scripts/Chapter3/ENM/Prediction/SaxMod_prediction_M2'))
-
-
 
 
 
@@ -563,107 +533,107 @@ bg <- randomPoints(predictors, 1000)
 
 # evaluate every model from the replication in arb
 AL1 <- evaluate(ArbModL@models[[1]], p=occtestAL, a=bg, x=predictors)
-AL1 # 
+AL1 # 0.83
 AL2 <- evaluate(ArbModL@models[[2]], p=occtestAL, a=bg, x=predictors)
-AL2 # 
+AL2 # 0.87
 AL3 <- evaluate(ArbModL@models[[3]], p=occtestAL, a=bg, x=predictors)
-AL3 # 
+AL3 # 0.86
 AL4 <- evaluate(ArbModL@models[[4]], p=occtestAL, a=bg, x=predictors)
-AL4 # 
+AL4 # 0.85
 AL5 <- evaluate(ArbModL@models[[5]], p=occtestAL, a=bg, x=predictors)
-AL5 # 
+AL5 # 0.87
 # evaluate every model from the replication in terr
 TL1 <- evaluate(TerrModL@models[[1]], p=occtestTL, a=bg, x=predictors)
-TL1 # 
+TL1 # 0.85
 TL2 <- evaluate(TerrModL@models[[2]], p=occtestTL, a=bg, x=predictors)
-TL2 # 
+TL2 # 0.87
 TL3 <- evaluate(TerrModL@models[[3]], p=occtestTL, a=bg, x=predictors)
-TL3 # 
+TL3 # 0.86
 TL4 <- evaluate(TerrModL@models[[4]], p=occtestTL, a=bg, x=predictors)
-TL4 # 
+TL4 # 0.87
 TL5 <- evaluate(TerrModL@models[[5]], p=occtestTL, a=bg, x=predictors)
-TL5 # 
+TL5 # 0.86
 # evaluate every model from the replication in aquatic
 WL1 <- evaluate(AquaModL@models[[1]], p=occtestWL, a=bg, x=predictors)
-WL1 # 
+WL1 # 0.93
 WL2 <- evaluate(AquaModL@models[[2]], p=occtestWL, a=bg, x=predictors)
-WL2 # 
+WL2 # 0.92
 WL3 <- evaluate(AquaModL@models[[3]], p=occtestWL, a=bg, x=predictors)
-WL3 #
+WL3 #0.93
 WL4 <- evaluate(AquaModL@models[[4]], p=occtestWL, a=bg, x=predictors)
-WL4 # 
+WL4 # 0.92
 WL5 <- evaluate(AquaModL@models[[5]], p=occtestWL, a=bg, x=predictors)
-WL5 # 
+WL5 # 0.93
 # evaluate every model from the replication in cave
 CL1 <- evaluate(CaveModL@models[[1]], p=occtestCL, a=bg, x=predictors)
-CL1 # 
+CL1 # 0.95
 CL2 <- evaluate(CaveModL@models[[2]], p=occtestCL, a=bg, x=predictors)
-CL2 # 
+CL2 # 0.95
 CL3 <- evaluate(CaveModL@models[[3]], p=occtestCL, a=bg, x=predictors)
-CL3 # 
+CL3 # 0.89
 CL4 <- evaluate(CaveModL@models[[4]], p=occtestCL, a=bg, x=predictors)
-CL4 # 
+CL4 # 0.95
 CL5 <- evaluate(CaveModL@models[[5]], p=occtestCL, a=bg, x=predictors)
-CL5 # 
+CL5 # 0.97
 # evaluate every model from the replication in fossorial
 FL1 <- evaluate(FossModL@models[[1]], p=occtestFL, a=bg, x=predictors)
-FL1 # 
+FL1 # 0.85
 FL2 <- evaluate(FossModL@models[[2]], p=occtestFL, a=bg, x=predictors)
-FL2 # 
+FL2 # 0.85
 FL3 <- evaluate(FossModL@models[[3]], p=occtestFL, a=bg, x=predictors)
-FL3 # 
+FL3 # 0.82
 FL4 <- evaluate(FossModL@models[[4]], p=occtestFL, a=bg, x=predictors)
-FL4 # 
+FL4 # 0.85
 FL5 <- evaluate(FossModL@models[[5]], p=occtestFL, a=bg, x=predictors)
-FL5 # 
+FL5 # 0.86
 # evaluate every model from the replication in sax
 SL1 <- evaluate(SaxModL@models[[1]], p=occtestSL, a=bg, x=predictors)
-SL1 # 
+SL1 # 0.93
 SL2 <- evaluate(SaxModL@models[[2]], p=occtestSL, a=bg, x=predictors)
-SL2 # 
+SL2 # 0.92
 SL3 <- evaluate(SaxModL@models[[3]], p=occtestSL, a=bg, x=predictors)
-SL3 # 
+SL3 # 0.93
 SL4 <- evaluate(SaxModL@models[[4]], p=occtestSL, a=bg, x=predictors)
-SL4 # 
+SL4 # 0.93
 SL5 <- evaluate(SaxModL@models[[5]], p=occtestSL, a=bg, x=predictors)
-SL5 # 
+SL5 # 0.93
 
 #################################################################################################################################
 
 
 # evaluate every model from the replication in arb
 AM11 <- evaluate(ArbModM1@models[[1]], p=occtestAM1, a=bg, x=predictors)
-AM11 # 
+AM11 # .90
 AM12 <- evaluate(ArbModM1@models[[2]], p=occtestAM1, a=bg, x=predictors)
-AM12 # 
+AM12 # .90
 AM13 <- evaluate(ArbModM1@models[[3]], p=occtestAM1, a=bg, x=predictors)
-AM13 # 
+AM13 # .90
 AM14 <- evaluate(ArbModM1@models[[4]], p=occtestAM1, a=bg, x=predictors)
-AM14 # 
+AM14 # .90
 AM15 <- evaluate(ArbModM1@models[[5]], p=occtestAM1, a=bg, x=predictors)
-AM15 # 
+AM15 # .90
 # evaluate every model from the replication in terr
 TM11 <- evaluate(TerrModM1@models[[1]], p=occtestTM1, a=bg, x=predictors)
-TM11 # 
+TM11 # .85
 TM12 <- evaluate(TerrModM1@models[[2]], p=occtestTM1, a=bg, x=predictors)
-TM12 # 
+TM12 # .86
 TM13 <- evaluate(TerrModM1@models[[3]], p=occtestTM1, a=bg, x=predictors)
-TM13 # 
+TM13 # .86
 TM14 <- evaluate(TerrModM1@models[[4]], p=occtestTM1, a=bg, x=predictors)
-TM14 # 
+TM14 # .83
 TM15 <- evaluate(TerrModM1@models[[5]], p=occtestTM1, a=bg, x=predictors)
-TM15 # 
+TM15 # .84
 # evaluate every model from the replication in aquatic
 WM11 <- evaluate(AquaModM1@models[[1]], p=occtestWM1, a=bg, x=predictors)
-WM11 # 
+WM11 # .93
 WM12 <- evaluate(AquaModM1@models[[2]], p=occtestWM1, a=bg, x=predictors)
-WM12 # 
+WM12 # .93
 WM13 <- evaluate(AquaModM1@models[[3]], p=occtestWM1, a=bg, x=predictors)
-WM13 #
+WM13 # .93
 WM14 <- evaluate(AquaModM1@models[[4]], p=occtestWM1, a=bg, x=predictors)
-WM14 # 
+WM14 # .93
 WM15 <- evaluate(AquaModM1@models[[5]], p=occtestWM1, a=bg, x=predictors)
-WM15 # 
+WM15 # .93
 # evaluate every model from the replication in cave
 CM11 <- evaluate(CaveModM1@models[[1]], p=occtestCM1, a=bg, x=predictors)
 CM11 # 
